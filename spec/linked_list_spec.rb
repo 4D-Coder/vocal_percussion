@@ -14,7 +14,6 @@ RSpec.describe LinkedList, type: :class do
     let(:list) { LinkedList.new }
 
     describe "#append()" do
-
       it "appends a node object to head" do
         sound = "doop"
 
@@ -22,6 +21,14 @@ RSpec.describe LinkedList, type: :class do
 
         expect(list.head).to be_a Node
         expect(list.head.data).to eq sound
+      end
+    end
+
+    describe "#count" do
+      it "counts how many elements are in the list" do
+        list.append("doop")
+
+        expect(list.count).to eq 1
       end
     end
   end
