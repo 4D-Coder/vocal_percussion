@@ -7,31 +7,27 @@ class LinkedList
 
   def append(sound)
     node = Node.new(sound)
-    self.head.nil? ? @head = node : find_tail(node)
-
+    self.head.nil? ? @head = node : find_tail.add_next(node)
   end
 
   def count
-    count = 0
-    return count if @head.nil?
-
+    @head.nil? ? count = 0 : count = 1
     current_node = @head
-    while current_node.next_node
-      count += 1
-    end
+    count += 1 while current_node = current_node.next_node
+    return count
   end
 
   private
   # methods that will only be utilized internally
 
-  def find_tail(node)
+  def find_tail
     current_node = @head
 
     until current_node.next_node.nil?
       current_node = current_node.next_node
     end
 
-    current_node.add_next(node)
+    current_node
   end
 
 end

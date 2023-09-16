@@ -36,10 +36,9 @@ RSpec.describe LinkedList, type: :class do
     end
 
     describe "#count" do
-      it "counts how many elements are in the list" do
+      it "sees how many elements exist within the list" do
         list.append("doop")
         expect(list.count).to eq 1
-
         list.append("beep")
         expect(list.count).to eq 2
       end
