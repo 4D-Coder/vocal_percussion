@@ -41,6 +41,8 @@ RSpec.describe LinkedList, type: :class do
         expect(list.count).to eq 1
         list.append("beep")
         expect(list.count).to eq 2
+        list.append("boppidy")
+        expect(list.count).to eq 3
       end
     end
 
@@ -49,8 +51,11 @@ RSpec.describe LinkedList, type: :class do
         list.append("beep")
         list.append("boop")
         list.append("bop")
-
         expect(list.to_string).to eq("beep boop bop")
+      end
+
+      it "returns message when list has no data" do
+        expect(list.to_string).to eq "List empty!"
       end
     end
   end

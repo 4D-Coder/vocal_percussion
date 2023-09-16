@@ -17,6 +17,14 @@ class LinkedList
     return count
   end
 
+  def to_string
+    return "List empty!" if @head.nil?
+    scat = head.data
+    current_node = head
+    scat.concat(" #{current_node.data}") while current_node = current_node.next_node
+    return scat
+  end
+
   private
   # methods that will only be utilized internally
 
