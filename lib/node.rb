@@ -6,4 +6,8 @@ class Node
     @data = data
     @next_node = next_node
   end
+
+  def add_next(node)
+    @next_node.nil? ? @next_node = node : "next_node already assigned."
+  end
 end
