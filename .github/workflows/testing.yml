@@ -38,5 +38,6 @@ jobs:
         echo "Installing gems..."
         gem install pry
         gem install rspec
+        bundle install
         echo "Running all tests using RSpec..."
         bundle exec rspec
