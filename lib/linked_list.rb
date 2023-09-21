@@ -26,7 +26,6 @@ class LinkedList
   end
 
   private
-  # methods that will only be utilized internally
 
   def find_tail
     current_node = @head
