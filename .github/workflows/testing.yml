@@ -35,9 +35,8 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
       run: |
-        echo "Ruby Version:"
-        ruby -v
-        echo "Gems currently available:"
-        gem list
-        echo "Running all test using RSpec..."
+        echo "Installing gems..."
+        gem install pry
+        gem install rspec
+        echo "Running all tests using RSpec..."
         bundle exec rspec
