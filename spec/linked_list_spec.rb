@@ -39,8 +39,10 @@ RSpec.describe LinkedList, type: :class do
       it "sees how many elements exist within the list" do
         list.append("doop")
         expect(list.count).to eq 1
+
         list.append("beep")
         expect(list.count).to eq 2
+
         list.append("boppidy")
         expect(list.count).to eq 3
       end
@@ -51,11 +53,22 @@ RSpec.describe LinkedList, type: :class do
         list.append("beep")
         list.append("boop")
         list.append("bop")
+
         expect(list.to_string).to eq("beep boop bop")
       end
 
       it "returns message when list has no data" do
         expect(list.to_string).to eq "List empty!"
+      end
+    end
+
+    describe "#prepend" do
+      it "adds a node to the end of the list" do
+        list.prepend("wap")
+        list.prepend("doo")
+        list.prepend("shaba")
+
+        expect(list.to_string).to eq("shaba doo wap")
       end
     end
   end

@@ -25,6 +25,12 @@ class LinkedList
     return scat
   end
 
+  def prepend(sound)
+    current_node = head unless head.nil?
+    @head = Node.new(sound)
+    head.add_next(current_node)
+  end
+
   private
 
   def find_tail
