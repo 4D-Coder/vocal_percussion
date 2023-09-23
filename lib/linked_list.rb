@@ -5,10 +5,6 @@ class LinkedList
     @head = nil
   end
 
-  def append(sound)
-    node = Node.new(sound)
-    self.head.nil? ? @head = node : find_tail.add_next(node)
-  end
 
   def count
     @head.nil? ? count = 0 : count = 1
@@ -25,10 +21,33 @@ class LinkedList
     return scat
   end
 
+  def append(sound)
+    node = Node.new(sound)
+    self.head.nil? ? @head = node : find_tail.add_next(node)
+  end
+
   def prepend(sound)
     current_node = head unless head.nil?
     @head = Node.new(sound)
     head.add_next(current_node)
+  end
+
+  def insert(index, sound)
+    if index == 0
+      self.prepend(sound)
+    elsif index == self.count + 1
+      self.append(sound)
+    else
+      new_node = Node.new(sound)
+      current_node = head
+
+      require 'pry'; binding.pry
+      (index - 1).times { current_node = current_node.next_node }
+      require 'pry'; binding.pry
+      new_node.add_next(current_node.next_node)
+      current_node.add_next(new_node)
+      require 'pry'; binding.pry
+    end
   end
 
   private

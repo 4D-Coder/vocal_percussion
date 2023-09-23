@@ -64,12 +64,32 @@ RSpec.describe LinkedList, type: :class do
 
     describe "#prepend" do
       it "adds a node to the end of the list" do
-        list.prepend("wap")
         list.prepend("doo")
+        list.append("wap")
         list.prepend("shaba")
 
         expect(list.to_string).to eq("shaba doo wap")
       end
     end
+
+    describe "#insert" do
+      it "selects an index, and inserts sound" do
+        # Tarzan: Smashin' the Camp
+        # do bop she doo
+        list.prepend("do")
+        list.append("doo")
+
+        list.insert(1, "bop")
+        expect(list.to_string).to eq("do bop doo")
+
+        list.insert(2, "she")
+        expect(list.to_string).to eq("do bop she doo")
+      end
+
+      xit "returns an error on an index outside of list range" do
+
+      end
+    end
+
   end
 end

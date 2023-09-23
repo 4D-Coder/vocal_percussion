@@ -8,6 +8,6 @@ class Node
   end
 
   def add_next(node)
-    @next_node.nil? ? @next_node = node : "next_node already assigned."
+    @next_node = node
   end
 end
