@@ -14,40 +14,31 @@ class LinkedList
   end
 
   def to_string
-    return "List empty!" if @head.nil?
-    scat = head.data
+    return "List empty!" if head.nil?
+    string = ""
     current_node = head
-    scat.concat(" #{current_node.data}") while current_node = current_node.next_node
-    return scat
+    i = self.count
+    i.times { string.concat("#{current_node.data} "); current_node = current_node.next_node }
+    return string.rstrip
   end
 
-  def append(sound)
-    node = Node.new(sound)
+  def append(value)
+    node = Node.new(value)
     self.head.nil? ? @head = node : find_tail.add_next(node)
   end
 
-  def prepend(sound)
-    current_node = head unless head.nil?
-    @head = Node.new(sound)
-    head.add_next(current_node)
+  def prepend(value)
+    previous_head = head
+    @head = Node.new(value)
+    head.add_next(previous_head)
   end
 
-  def insert(index, sound)
-    if index == 0
-      self.prepend(sound)
-    elsif index == self.count + 1
-      self.append(sound)
-    else
-      new_node = Node.new(sound)
-      current_node = head
-
-      require 'pry'; binding.pry
-      (index - 1).times { current_node = current_node.next_node }
-      require 'pry'; binding.pry
-      new_node.add_next(current_node.next_node)
-      current_node.add_next(new_node)
-      require 'pry'; binding.pry
-    end
+  def insert(index, value)
+    return prepend(value) if index == 0
+    new_node = Node.new(value); current_node = head
+    (index - 1).times { current_node = current_node.next_node }
+    new_node.add_next(current_node.next_node)
+    current_node.add_next(new_node)
   end
 
   private

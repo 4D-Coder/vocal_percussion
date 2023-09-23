@@ -78,7 +78,6 @@ RSpec.describe LinkedList, type: :class do
         # do bop she doo
         list.prepend("do")
         list.append("doo")
-
         list.insert(1, "bop")
         expect(list.to_string).to eq("do bop doo")
 
@@ -86,8 +85,11 @@ RSpec.describe LinkedList, type: :class do
         expect(list.to_string).to eq("do bop she doo")
       end
 
-      xit "returns an error on an index outside of list range" do
+      it "prepends when index supplied is 0" do
+        list.append("dop")
+        list.insert(0, "zwee")
 
+        expect(list.to_string).to eq("zwee dop")
       end
     end
 
