@@ -40,6 +40,14 @@ class LinkedList
     current_node.add_next(new_node)
   end
 
+  def find(index, quantity)
+    collection = to_string.split(" ")
+    substring = ""
+    # Enumeration over the Range class https://ruby-doc.org/core-2.5.1/Range.html#method-i-each
+    (index..index + quantity - 1).each { |i| substring.concat(collection[i], ' ') }
+    return substring.strip
+  end
+
   private
 
   def find_tail
