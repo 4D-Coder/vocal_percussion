@@ -44,10 +44,16 @@ class LinkedList
     collection = to_string.split(" ")
     substring = ""
     # Enumeration over the Range class https://ruby-doc.org/core-2.5.1/Range.html#method-i-each
+    # Sliding window technique
     (index..index + quantity - 1).each { |i| substring.concat(collection[i], ' ') }
     return substring.strip
   end
 
+  def includes?(string)
+    collection = to_string.split(" ")
+    collection.include?(string)
+  end
+  
   private
 
   def find_tail

@@ -114,5 +114,16 @@ RSpec.describe LinkedList, type: :class do
         expect(list.find(3, 1)).to eq("doo")
       end
     end
+
+    describe "#includes?" do
+      it "gives back true or false whether the supplied value is in the list" do
+        list.insert(0, "zwee")
+        list.insert(1, "dop")
+
+        expect(list.includes?("zwee")).to be true
+        expect(list.includes?("doink")).to be false
+        expect(list.includes?("dop")).to be true
+      end
+    end
   end
 end
