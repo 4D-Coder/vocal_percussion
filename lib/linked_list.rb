@@ -15,9 +15,7 @@ class LinkedList
 
   def to_string
     return "List empty!" if head.nil?
-    string = ""
-    current_node = head
-    i = self.count
+    string = ""; current_node = head; i = self.count
     i.times { string.concat("#{current_node.data} "); current_node = current_node.next_node }
     return string.rstrip
   end
@@ -35,6 +33,7 @@ class LinkedList
 
   def insert(index, value)
     return prepend(value) if index == 0
+    return append(value) if index > count - 1
     new_node = Node.new(value); current_node = head
     (index - 1).times { current_node = current_node.next_node }
     new_node.add_next(current_node.next_node)

@@ -75,7 +75,6 @@ RSpec.describe LinkedList, type: :class do
     describe "#insert" do
       it "selects an index, and inserts sound" do
         # Tarzan: Smashin' the Camp
-        # do bop she doo
         list.prepend("do")
         list.append("doo")
         list.insert(1, "bop")
@@ -83,6 +82,15 @@ RSpec.describe LinkedList, type: :class do
 
         list.insert(2, "she")
         expect(list.to_string).to eq("do bop she doo")
+      end
+
+      it "appends indices outside of current range" do
+        list.insert(0, "zwee")
+        list.insert(1, "dop")
+        list.insert(2, "she")
+        list.insert(3, "doo")
+
+        expect(list.to_string).to eq("zwee dop she doo")
       end
 
       it "prepends when index supplied is 0" do
@@ -93,5 +101,18 @@ RSpec.describe LinkedList, type: :class do
       end
     end
 
+    describe "#find" do
+      it "finds a node by index" do
+        list.insert(0, "zwee")
+        list.insert(1, "dop")
+        list.insert(2, "she")
+        list.insert(3, "doo")
+
+        expect(list.find(0, 1)).to eq("zwee")
+        expect(list.find(1, 2)).to eq("dop she")
+        expect(list.find(0, 3)).to eq("zwee dop she")
+        expect(list.find(3, 1)).to eq("doo")
+      end
+    end
   end
 end
