@@ -39,8 +39,10 @@ RSpec.describe LinkedList, type: :class do
       it "sees how many elements exist within the list" do
         list.append("doop")
         expect(list.count).to eq 1
+
         list.append("beep")
         expect(list.count).to eq 2
+
         list.append("boppidy")
         expect(list.count).to eq 3
       end
@@ -51,11 +53,88 @@ RSpec.describe LinkedList, type: :class do
         list.append("beep")
         list.append("boop")
         list.append("bop")
+
         expect(list.to_string).to eq("beep boop bop")
       end
 
       it "returns message when list has no data" do
         expect(list.to_string).to eq "List empty!"
+      end
+    end
+
+    describe "#prepend" do
+      it "adds a node to the end of the list" do
+        list.prepend("doo")
+        list.append("wap")
+        list.prepend("shaba")
+
+        expect(list.to_string).to eq("shaba doo wap")
+      end
+    end
+
+    describe "#insert" do
+      it "selects an index, and inserts sound" do
+        # Tarzan: Smashin' the Camp
+        list.prepend("do")
+        list.append("doo")
+        list.insert(1, "bop")
+        expect(list.to_string).to eq("do bop doo")
+
+        list.insert(2, "she")
+        expect(list.to_string).to eq("do bop she doo")
+      end
+
+      it "appends indices outside of current range" do
+        list.insert(0, "zwee")
+        list.insert(1, "dop")
+        list.insert(2, "she")
+        list.insert(3, "doo")
+
+        expect(list.to_string).to eq("zwee dop she doo")
+      end
+
+      it "prepends when index supplied is 0" do
+        list.append("dop")
+        list.insert(0, "zwee")
+
+        expect(list.to_string).to eq("zwee dop")
+      end
+    end
+
+    describe "#find" do
+      it "finds a node by index" do
+        list.insert(0, "zwee")
+        list.insert(1, "dop")
+        list.insert(2, "she")
+        list.insert(3, "doo")
+
+        expect(list.find(0, 1)).to eq("zwee")
+        expect(list.find(1, 2)).to eq("dop she")
+        expect(list.find(0, 3)).to eq("zwee dop she")
+        expect(list.find(3, 1)).to eq("doo")
+      end
+    end
+
+    describe "#includes?" do
+      it "gives back true or false whether the supplied value is in the list" do
+        list.insert(0, "zwee")
+        list.insert(1, "dop")
+
+        expect(list.includes?("zwee")).to be true
+        expect(list.includes?("doink")).to be false
+        expect(list.includes?("dop")).to be true
+      end
+    end
+
+    describe "#pop" do
+      it "removes the last element from the list and returns it" do
+        list.insert(0, "zwee")
+        list.insert(1, "dop")
+
+        expect(list.pop).to eq("dop")
+        expect(list.to_string).to eq("zwee")
+        expect(list.pop).to eq("zwee")
+        expect(list.to_string).to eq("List empty!")
       end
     end
   end

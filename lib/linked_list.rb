@@ -5,10 +5,6 @@ class LinkedList
     @head = nil
   end
 
-  def append(sound)
-    node = Node.new(sound)
-    self.head.nil? ? @head = node : find_tail.add_next(node)
-  end
 
   def count
     @head.nil? ? count = 0 : count = 1
@@ -18,11 +14,58 @@ class LinkedList
   end
 
   def to_string
-    return "List empty!" if @head.nil?
-    scat = head.data
+    return "List empty!" if head.nil?
+    string = ""; current_node = head; i = self.count
+    i.times { string.concat("#{current_node.data} "); current_node = current_node.next_node }
+    return string.rstrip
+  end
+
+  def append(value)
+    new_node = Node.new(value)
+
+    self.head.nil? ? @head = new_node : find_tail.add_next(new_node)
+  end
+
+
+  def pop
+    return to_string if head.nil?
+    if head.next_node.nil?
+      popped_data = head.data
+      @head = nil
+      return popped_data
+    end
     current_node = head
-    scat.concat(" #{current_node.data}") while current_node = current_node.next_node
-    return scat
+    current_node = current_node.next_node until current_node.next_node.next_node.nil?
+    popped_node = current_node.next_node
+    current_node.add_next(nil)
+    return popped_node.data
+  end
+
+  def prepend(value)
+    previous_head = head
+    @head = Node.new(value)
+    head.add_next(previous_head)
+  end
+
+  def insert(index, value)
+    return prepend(value) if index == 0
+    return append(value) if index > count - 1
+    new_node = Node.new(value); current_node = head
+    (index - 1).times { current_node = current_node.next_node }
+    new_node.add_next(current_node.next_node)
+    current_node.add_next(new_node)
+  end
+
+  def find(index, quantity)
+    collection = to_string.split(" ")
+    substring = ""
+    (index..index + quantity - 1).each { |i| substring.concat(collection[i], ' ') }
+    return substring.strip
+  end
+
+  def includes?(string)
+    collection = to_string.split(" ")
+    collection.include?(string)
   end
 
   private
@@ -36,5 +79,4 @@ class LinkedList
 
     current_node
   end
-
 end
