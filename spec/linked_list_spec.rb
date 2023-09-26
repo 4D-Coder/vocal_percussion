@@ -125,5 +125,17 @@ RSpec.describe LinkedList, type: :class do
         expect(list.includes?("dop")).to be true
       end
     end
+
+    describe "#pop" do
+      it "removes the last element from the list and returns it" do
+        list.insert(0, "zwee")
+        list.insert(1, "dop")
+
+        expect(list.pop).to eq("dop")
+        expect(list.to_string).to eq("zwee")
+        expect(list.pop).to eq("zwee")
+        expect(list.to_string).to eq("List empty!")
+      end
+    end
   end
 end

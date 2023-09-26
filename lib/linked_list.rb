@@ -21,9 +21,30 @@ class LinkedList
   end
 
   def append(value)
-    node = Node.new(value)
-    self.head.nil? ? @head = node : find_tail.add_next(node)
+    new_node = Node.new(value)
+
+    self.head.nil? ? @head = new_node : find_tail.add_next(new_node)
   end
+
+
+  def pop
+    return to_string if head.nil?
+    if head.next_node.nil?
+      popped_data = head.data
+      @head = nil
+      return popped_data
+    end
+    current_node = head
+    current_node = current_node.next_node until current_node.next_node.next_node.nil?
+    popped_node = current_node.next_node
+    current_node.add_next(nil)
+    return popped_node.data
+  end
+  # return popped_data = head.data; @head = nil if head.next_node.nil?
+
+  # Does not work because the segment before the semicolon will
+  # Always run and will not be subject to the conditional defined further down the line
+  # https://chat.openai.com/share/b05174a1-7ebc-41ea-86f2-dcf5a534984f
 
   def prepend(value)
     previous_head = head
@@ -40,11 +61,11 @@ class LinkedList
     current_node.add_next(new_node)
   end
 
+  # Enumeration over the Range class https://ruby-doc.org/core-2.5.1/Range.html#method-i-each
+  # Sliding window technique
   def find(index, quantity)
     collection = to_string.split(" ")
     substring = ""
-    # Enumeration over the Range class https://ruby-doc.org/core-2.5.1/Range.html#method-i-each
-    # Sliding window technique
     (index..index + quantity - 1).each { |i| substring.concat(collection[i], ' ') }
     return substring.strip
   end
@@ -53,7 +74,7 @@ class LinkedList
     collection = to_string.split(" ")
     collection.include?(string)
   end
-  
+
   private
 
   def find_tail
