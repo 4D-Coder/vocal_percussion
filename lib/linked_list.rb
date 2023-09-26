@@ -40,11 +40,6 @@ class LinkedList
     current_node.add_next(nil)
     return popped_node.data
   end
-  # return popped_data = head.data; @head = nil if head.next_node.nil?
-
-  # Does not work because the segment before the semicolon will
-  # Always run and will not be subject to the conditional defined further down the line
-  # https://chat.openai.com/share/b05174a1-7ebc-41ea-86f2-dcf5a534984f
 
   def prepend(value)
     previous_head = head
@@ -61,8 +56,6 @@ class LinkedList
     current_node.add_next(new_node)
   end
 
-  # Enumeration over the Range class https://ruby-doc.org/core-2.5.1/Range.html#method-i-each
-  # Sliding window technique
   def find(index, quantity)
     collection = to_string.split(" ")
     substring = ""
@@ -86,5 +79,4 @@ class LinkedList
 
     current_node
   end
-
 end
