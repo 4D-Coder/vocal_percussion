@@ -17,11 +17,18 @@ This application utilizes your operating system's built-in text to speech progra
   sudo apt update
 ```
 
-1. This project is built using [festival](https://www.cstr.ed.ac.uk/projects/festival/), however there are other options such as [espeak](https://espeak.sourceforge.net/). If you have neither, lets proceed with festival:
+1. This project is built using [festival](https://www.cstr.ed.ac.uk/projects/festival/), however there are other options such as [espeak](https://espeak.sourceforge.net/). If you have neither, lets proceed with espeak:
 
 ```shell
-  sudo apt install festival
+  sudo apt install espeak
 ```
+
+1. Once installed, `espeak` can be used in the command line for testing:
+
+```shell
+ espeak -s 175 "Hello World"
+```
+
 
 - For guidance on troubleshooting issues during this installation step, check out the [Possible Issues and Fixes](#possible-issues-and-fixes) segment.
 
