@@ -32,5 +32,14 @@ RSpec.describe BeatBox, type: :class do
         expect(bb.count).to eq 6
       end
     end
+
+    describe "#play" do
+      it "plays the sounds deep doo ditt woo hoo shu" do
+        bb.append("deep doo ditt woo hoo shu")
+        expect(bb.count).to eq 6
+        expect(bb.list.count).to eq 6
+        bb.play
+      end
+    end
   end
 end
