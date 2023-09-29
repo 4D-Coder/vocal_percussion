@@ -18,6 +18,7 @@ require './lib/linked_list'
 require './lib/beat_box'
 require 'faker'
 require 'simplecov'
+require 'os'
 
 SimpleCov.start
 RSpec.configure do |config|

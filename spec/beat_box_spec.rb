@@ -22,7 +22,22 @@ RSpec.describe BeatBox, type: :class do
         expect(bb.list.head.data).to eq "deep"
         expect(bb.list.head.next_node.data).to eq "doo"
       end
+    end
 
+    describe "#prepend" do
+      it "can prepend multiple sounds at once to it's list" do
+        pattern1 = "deep doo ditt"
+        pattern2 = "woo hoo shu"
+
+        bb.append(pattern1)
+        expect(bb.all).to eq pattern1
+
+        bb.prepend(pattern2)
+        expect(bb.all).to eq "#{pattern2} #{pattern1}"
+      end
+    end
+
+    describe "#count" do
       it "can return a count of sounds in it's list" do
         pattern1 = "deep doo ditt"
         pattern2 = "woo hoo shu"
@@ -39,6 +54,81 @@ RSpec.describe BeatBox, type: :class do
         expect(bb.count).to eq 6
         expect(bb.list.count).to eq 6
         bb.play
+      end
+    end
+
+    describe "#rate" do
+      it "allows user to customize the speed of tts playback" do
+        pattern = "deep dop dop deep"
+        bb.append(pattern)
+
+        expect(bb.rate).to eq 500
+        bb.play
+
+        bb.rate = 100
+
+        expect(bb.rate).to eq 100
+        bb.play
+      end
+    end
+
+    describe "#reset_rate" do
+      it "resets an adjusted rate back to the default of 500" do
+        pattern = "deep dop dop deep"
+        bb.append(pattern)
+        bb.rate = 100
+
+        expect(bb.rate).to eq 100
+        bb.play
+
+        expect(bb.reset_rate).to eq 500
+        bb.play
+      end
+    end
+
+    describe "#voice" do
+      it "allows user to adjust the voice of the tts playback" do
+        pattern = "deep dop dop deep"
+        bb.append(pattern)
+        bb.rate = 100
+
+        expect(bb.voice).to eq "english-us"
+        bb.play
+
+        bb.voice = "en-westindies"
+
+        expect(bb.voice).to eq "en-westindies"
+        bb.play
+      end
+    end
+
+    describe "#reset_voice" do
+      it "resets an adjusted rate back to the default of 500" do
+        pattern = "deep dop dop deep"
+        bb.append(pattern)
+        bb.rate = 100
+
+        bb.voice = "en-westindies"
+
+        expect(bb.voice).to eq "en-westindies"
+        bb.play
+
+        expect(bb.reset_voice).to eq "english-us"
+        bb.play
+      end
+    end
+  end
+
+  context "#private methods" do
+    describe "#validate" do
+      let(:bb) { BeatBox.new }
+
+      it "returns true for valid beats" do
+        expect(bb.send(:validate, ["tee", "dee", "deep"])).to eq(true)
+      end
+
+      it "returns false for invalid beats" do
+        expect(bb.send(:validate, ["tee", "dee", "invalid"])).to eq(false)
       end
     end
   end
