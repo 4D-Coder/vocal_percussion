@@ -1,5 +1,5 @@
 # Vocal Percussion
-Build inspired by [Beat Box](https://backend.turing.edu/module1/projects/beat_box/), a linked-list excersise at the Turing School of Software and Design.
+Build inspired by [Beat Box](https://backend.turing.edu/module1/projects/beat_box/), a linked-list excersise at the Turing School of Software and Design. While the project guidelines are structured around development on MacOS, this project was built using Debian 6.1.52-1 (2023-09-07) x86_64 GNU/Linux.
 
 ## What is a Linked List?
 
