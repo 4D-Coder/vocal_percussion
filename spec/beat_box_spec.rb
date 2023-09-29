@@ -61,7 +61,14 @@ RSpec.describe BeatBox, type: :class do
       it "allows user to customize the speed of tts playback" do
         pattern = "deep dop dop deep"
         bb.append(pattern)
-        bb.rate
+        require 'pry'; binding.pry
+        expect(bb.rate).to eq 500
+        bb.play
+
+        bb.rate = 100
+
+        expect(bb.rate).to eq 100
+        bb.play
       end
     end
   end
