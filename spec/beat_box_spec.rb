@@ -33,7 +33,7 @@ RSpec.describe BeatBox, type: :class do
         expect(bb.all).to eq pattern1
 
         bb.prepend(pattern2)
-        expect(bb.all).to eq(pattern2 + pattern1)
+        expect(bb.all).to eq "#{pattern2} #{pattern1}"
       end
     end
 
@@ -57,9 +57,15 @@ RSpec.describe BeatBox, type: :class do
       end
     end
 
-    describe "#all" do
-      xit "returns all beats currently stored in it's list" do
+    describe "#validate" do
+      let(:beat_box) { BeatBox.new }
 
+      it "returns true for valid beats" do
+        expect(beat_box.send(:validate, ["tee", "dee", "deep"])).to eq(true)
+      end
+
+      it "returns false for invalid beats" do
+        expect(beat_box.send(:validate, ["tee", "dee", "invalid"])).to eq(false)
       end
     end
   end
