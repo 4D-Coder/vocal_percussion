@@ -85,6 +85,38 @@ RSpec.describe BeatBox, type: :class do
         bb.play
       end
     end
+
+    describe "#voice" do
+      it "allows user to adjust the voice of the tts playback" do
+        pattern = "deep dop dop deep"
+        bb.append(pattern)
+        bb.rate = 100
+
+        expect(bb.voice).to eq "english-us"
+        bb.play
+
+        bb.voice = "en-westindies"
+
+        expect(bb.voice).to eq "en-westindies"
+        bb.play
+      end
+    end
+
+    describe "#reset_voice" do
+      it "resets an adjusted rate back to the default of 500" do
+        pattern = "deep dop dop deep"
+        bb.append(pattern)
+        bb.rate = 100
+
+        bb.voice = "en-westindies"
+
+        expect(bb.voice).to eq "en-westindies"
+        bb.play
+
+        expect(bb.reset_voice).to eq "english-us"
+        bb.play
+      end
+    end
   end
 
   context "#private methods" do
