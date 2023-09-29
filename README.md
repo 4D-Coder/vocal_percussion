@@ -33,6 +33,8 @@ This application utilizes your operating system's built-in text to speech progra
  espeak -s 175 "Hello World"
 ```
 
+- For guidance on troubleshooting issues during this installation step, check out the [Possible Issues and Fixes](#possible-issues-and-fixes) segment.
+  
 ## Usage
 This program allows you to utilize your systems TTS program to "Beat Box" or repeat an argument given in the command line with a customizable voice (default `english-us`) and rate (default `500`).`espeak --voices=en-us` will list your english-speaking options, which then can be passed to this program as one of the arguments in the following format :
 
@@ -59,9 +61,6 @@ Alternatively, you can opt to playback using a default voice with a custom rate,
 $ ./vocal_percussion.rb -r 100 "deep doop doop deep"
 $ ./vocal_percussion.rb -v en-scottish -r 100 "deep doop doop deep"
 ```
-
-
-- For guidance on troubleshooting issues during this installation step, check out the [Possible Issues and Fixes](#possible-issues-and-fixes) segment.
 
 ### Possible Issues and Fixes
 #### ❗ Inability to view coverage metrics
