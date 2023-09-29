@@ -30,7 +30,10 @@ class BeatBox
 
   def play
     beats = self.list.to_string
-    `espeak -s 175 "#{beats}"`
+    # Add functionality that analyzes if OS is macOS or Linux
+    # Added os gem
+    require 'pry'; binding.pry
+    `espeak -s #{rate} "#{beats}"`
   end
 
   private

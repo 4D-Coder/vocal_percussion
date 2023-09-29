@@ -57,15 +57,25 @@ RSpec.describe BeatBox, type: :class do
       end
     end
 
+    describe "#rate" do
+      it "allows user to customize the speed of tts playback" do
+        pattern = "deep dop dop deep"
+        bb.append(pattern)
+        bb.rate
+      end
+    end
+  end
+
+  context "#private methods" do
     describe "#validate" do
-      let(:beat_box) { BeatBox.new }
+      let(:bb) { BeatBox.new }
 
       it "returns true for valid beats" do
-        expect(beat_box.send(:validate, ["tee", "dee", "deep"])).to eq(true)
+        expect(bb.send(:validate, ["tee", "dee", "deep"])).to eq(true)
       end
 
       it "returns false for invalid beats" do
-        expect(beat_box.send(:validate, ["tee", "dee", "invalid"])).to eq(false)
+        expect(bb.send(:validate, ["tee", "dee", "invalid"])).to eq(false)
       end
     end
   end
