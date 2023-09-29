@@ -43,6 +43,10 @@ class BeatBox
     @rate = rate
   end
 
+  def reset_rate
+    @rate = DEFAULT_RATE
+  end
+
   private
 
   def validate(string)
