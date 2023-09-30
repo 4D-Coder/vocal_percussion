@@ -38,7 +38,7 @@ This application utilizes your operating system's built-in text to speech progra
 ## Usage
 This program allows you to utilize your systems TTS program to "Beat Box" or repeat an argument given in the command line with a customizable voice (default `english-us`) and rate (default `500`).`espeak --voices=en-us` will list your english-speaking options, which then can be passed to this program as one of the arguments in the following format :
 
-`$ ./vocal_percussion.rb -r <rate> -v <voice_selection> <sounds>`
+`$ ruby vocal_percussion.rb -r <rate> -v <voice_selection> <sounds>`
 
 ```bash
 $ espeak --voices=en-us
