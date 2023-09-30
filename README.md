@@ -34,7 +34,7 @@ This application utilizes your operating system's built-in text to speech progra
 ```
 
 - For guidance on troubleshooting issues during this installation step, check out the [Possible Issues and Fixes](#possible-issues-and-fixes) segment.
-  
+
 ## Usage
 This program allows you to utilize your systems TTS program to "Beat Box" or repeat an argument given in the command line with a customizable voice (default `english-us`) and rate (default `500`).`espeak --voices=en-us` will list your english-speaking options, which then can be passed to this program as one of the arguments in the following format :
 
@@ -51,16 +51,22 @@ Pty Language Age/Gender VoiceName          File          Other Languages
 ```
 
 ```bash
-$ ./vocal_percussion.rb -v en-scottish "deep doop doop dop"
+$ ruby vocal_percussion.rb -v en-scottish "deep dop dop deep"
   # will playback using custom voice with the default rate of 500
 ```
 
 Alternatively, you can opt to playback using a default voice with a custom rate, or customize both:
 
 ```bash
-$ ./vocal_percussion.rb -r 100 "deep doop doop deep"
-$ ./vocal_percussion.rb -v en-scottish -r 100 "deep doop doop deep"
+$  ruby vocal_percussion.rb -r 100 "deep dop dop deep"
+$  ruby vocal_percussion.rb -v en-scottish -r 100 "deep dop dop deep"
 ```
+
+
+### List of Currently Supported Beats
+Currently, the program only supports a set list of "beats". If the TTS states "List Empty!", it's likely that youve passed in an invalid beat.
+
+"tee", "dee", "deep", "bop", "boop", "la", "na", "ditt", "doo", "woo", "hoo", "shu", "dop"
 
 ### Possible Issues and Fixes
 #### ❗ Inability to view coverage metrics
