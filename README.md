@@ -64,9 +64,10 @@ $  ruby vocal_percussion.rb -v en-scottish -r 100 "deep dop dop deep"
 
 
 ### List of Currently Supported Beats
-Currently, the program only supports a set list of "beats". If the TTS states "List Empty!", it's likely that youve passed in an invalid beat.
+Currently, the program only supports a set list of "beats". If the TTS states `"List Empty!"`, it's likely that youve passed in an invalid beat.
 
-"tee", "dee", "deep", "bop", "boop", "la", "na", "ditt", "doo", "woo", "hoo", "shu", "dop"
+#### Supported:
+`"tee", "dee", "deep", "bop", "boop", "la", "na", "ditt", "doo", "woo", "hoo", "shu", "dop"`
 
 ### Possible Issues and Fixes
 #### ❗ Inability to view coverage metrics
