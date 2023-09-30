@@ -2,15 +2,18 @@ require './lib/node'
 require './lib/linked_list'
 require './lib/beat_box'
 
-ALLOWED_OPTIONS = ["-r", "-v"]
-bb = BeatBox.new
-bb.rate = ARGV[ARGV.index("-r") + 1] if ARGV.index("-r")
-bb.voice = ARGV[ARGV.index("-v") + 1] if ARGV.index("-v")
-bb.append(ARGV.last)
+VALID_OPTIONS = ["-r", "-v"]
 
-if ARGV.all? do |e| { |e| ALLOWED_OPTIONS.include?(e) }
-  bb.play
-else
-  allowed_options_str = ALLOWED_OPTIONS.join(", ")
-  puts "Invalid options. Allowed options are: #{allowed_options_str}"
+bb = BeatBox.new
+options = ARGV.select {|e| e =~ /^-\w+$/ }
+
+unless options.all? { |o| VALID_OPTIONS.include?(o) }
+  puts "Invalid option passed. Valid options include: #{VALID_OPTIONS}"
+  exit
 end
+
+bb.rate = ARGV[ARGV.index("-r") + 1].to_i if ARGV.include?("-r")
+bb.voice = ARGV[ARGV.index("-v") + 1] if ARGV.include?("-v")
+
+bb.append(ARGV.last)
+bb.play
