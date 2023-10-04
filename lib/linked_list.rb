@@ -10,14 +10,14 @@ class LinkedList
     @head.nil? ? count = 0 : count = 1
     current_node = @head
     count += 1 while current_node = current_node.next_node
-    return count
+    count
   end
 
   def to_string
     return "List empty!" if head.nil?
     string = ""; current_node = head; i = self.count
     i.times { string.concat("#{current_node.data} "); current_node = current_node.next_node }
-    return string.rstrip
+    string.rstrip
   end
 
   def append(value)
@@ -38,7 +38,7 @@ class LinkedList
     current_node = current_node.next_node until current_node.next_node.next_node.nil?
     popped_node = current_node.next_node
     current_node.add_next(nil)
-    return popped_node.data
+    popped_node.data
   end
 
   def prepend(value)
@@ -60,7 +60,7 @@ class LinkedList
     collection = to_string.split(" ")
     substring = ""
     (index..index + quantity - 1).each { |i| substring.concat(collection[i], ' ') }
-    return substring.strip
+    substring.strip
   end
 
   def includes?(string)
